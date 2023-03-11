@@ -25,27 +25,32 @@ int check_el(int* ar, int len){
 
 
 void  number_test(FILE* f){
-
-	int len, num;
-	fscanf(f, "%d%n", &num, &len);
 	
 	FILE* res = fopen("result.txt", "w");
-	fprintf(res, "%d", num);
 
-	int ar[len];
+	while(!feof(f)){
+		
+		int len, num;
+		fscanf(f, "%d\n%n", &num, &len);
+		len--;
+
+		fprintf(res, "%d", num);
+
+		int ar[len];
 	
 
-	for(int i = 0; i < len; i++){
-		ar[i] = num % 10;
-		num /= 10;
+		for(int i = 0; i < len; i++){
+			ar[i] = num % 10;
+			num /= 10;
+		}
+	
+
+		if(check_el(ar, len) == 1){
+                	fprintf(res, "%s\n", " -- палиндром");
+        	}else{
+                	fprintf(res, "%s\n", " -- не палиндром");
+        	}
 	}
 	
-
-	if(check_el(ar, len) == 1){
-                fprintf(res, "%s\n", " -- палиндром");
-        }else{
-                fprintf(res, "%s\n", " -- не палиндром");
-        }
-
 	fclose(res);
 }
