@@ -5,6 +5,6 @@
 
 int check_el(int*, int);
 
-void number_test(FILE*);
+void check_polindrome(FILE*);
 
 #endif //TEST_H

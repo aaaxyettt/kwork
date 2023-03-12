@@ -24,19 +24,19 @@ int check_el(int* ar, int len){
 
 
 
-void  number_test(FILE* f){
+void  check_polindrome(FILE* f){
 	
 	FILE* res = fopen("result.txt", "w");
 
 	while(!feof(f)){
 		
 		int len, num;
-		fscanf(f, "%d\n%n", &num, &len);
+		fscanf(f, "%d\n%n", &num, &len);//в переменную len записывается положение указателя, т.е.  длина самого числа и перенос строки, поскольку ввод форматированный, то все должно быть хорошо...  или нет…? 
 		len--;
 
 		fprintf(res, "%d", num);
 
-		int ar[len];
+		int* ar = new int [len];
 	
 
 		for(int i = 0; i < len; i++){
@@ -50,6 +50,8 @@ void  number_test(FILE* f){
         	}else{
                 	fprintf(res, "%s\n", " -- не палиндром");
         	}
+		
+		delete[] ar;
 	}
 	
 	fclose(res);

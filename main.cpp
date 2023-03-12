@@ -2,10 +2,10 @@
 #include <iostream>
 #include <stdio.h>
 
-int main(){
-
-	FILE* f = fopen("numbers.txt", "r");
-	number_test(f);
+int main(int argc, char** argv){
+	
+	FILE* f = fopen(argv[1], "r");
+	check_polindrome(f);
 	fclose(f);
 
 	return 0;
